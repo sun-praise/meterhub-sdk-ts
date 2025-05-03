@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "meterhub/*": ["dist/src/*"],
-      "meterhub": ["dist/src/index.ts"],
+      "meterhub": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
