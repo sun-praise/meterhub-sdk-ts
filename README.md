@@ -26,13 +26,9 @@ const client = new Meterhub({
   apiKey: process.env['METERHUB_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' });
+const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' });
 
-  console.log(response.data);
-}
-
-main();
+console.log(response.data);
 ```
 
 ### Request & Response types
@@ -47,12 +43,8 @@ const client = new Meterhub({
   apiKey: process.env['METERHUB_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: Meterhub.API.V1.MeterDetectParams = { image: 'REPLACE_ME' };
-  const response: Meterhub.API.V1.MeterDetectResponse = await client.api.v1.meter.detect(params);
-}
-
-main();
+const params: Meterhub.API.V1.MeterDetectParams = { image: 'REPLACE_ME' };
+const response: Meterhub.API.V1.MeterDetectResponse = await client.api.v1.meter.detect(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -65,19 +57,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' }).catch(async (err) => {
-    if (err instanceof Meterhub.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' }).catch(async (err) => {
+  if (err instanceof Meterhub.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
