@@ -34,7 +34,7 @@ export class Meter extends APIResource {
 export interface MeterAnalyzeResponse {
   data: unknown;
 
-  error: Record<string, string> | null;
+  error: { [key: string]: string } | null;
 
   success: boolean;
 }
@@ -42,7 +42,7 @@ export interface MeterAnalyzeResponse {
 export interface MeterDetectResponse {
   data: unknown;
 
-  error: Record<string, string> | null;
+  error: { [key: string]: string } | null;
 
   success: boolean;
 }
