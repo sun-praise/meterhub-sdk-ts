@@ -31,7 +31,7 @@ export class Read extends APIResource {
 export interface MeterReading {
   data: unknown;
 
-  error: Record<string, string> | null;
+  error: { [key: string]: string } | null;
 
   success: boolean;
 }
