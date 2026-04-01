@@ -1,6 +1,6 @@
 # Meterhub TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/meterhub.svg)](https://npmjs.org/package/meterhub) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/meterhub)
+[![NPM version](<https://img.shields.io/npm/v/meterhub.svg?label=npm%20(stable)>)](https://npmjs.org/package/meterhub) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/meterhub)
 
 This library provides convenient access to the Meterhub REST API from server-side TypeScript or JavaScript.
 
@@ -11,11 +11,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/meterhub-typescript.git
+npm install meterhub
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install meterhub`
 
 ## Usage
 
@@ -29,13 +26,9 @@ const client = new Meterhub({
   apiKey: process.env['METERHUB_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' });
+const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' });
 
-  console.log(response.data);
-}
-
-main();
+console.log(response.data);
 ```
 
 ### Request & Response types
@@ -50,12 +43,8 @@ const client = new Meterhub({
   apiKey: process.env['METERHUB_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: Meterhub.API.V1.MeterDetectParams = { image: 'REPLACE_ME' };
-  const response: Meterhub.API.V1.MeterDetectResponse = await client.api.v1.meter.detect(params);
-}
-
-main();
+const params: Meterhub.API.V1.MeterDetectParams = { image: 'REPLACE_ME' };
+const response: Meterhub.API.V1.MeterDetectResponse = await client.api.v1.meter.detect(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -68,19 +57,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' }).catch(async (err) => {
-    if (err instanceof Meterhub.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const response = await client.api.v1.meter.detect({ image: 'REPLACE_ME' }).catch(async (err) => {
+  if (err instanceof Meterhub.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
@@ -240,9 +225,8 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.foo.create({
-  foo: 'my_param',
-  bar: 12,
+client.api.v1.meter.detect({
+  // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
 });
@@ -351,7 +335,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/meterhub-typescript/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/Svtter/meterhub-sdk-ts/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
@@ -360,7 +344,7 @@ TypeScript >= 4.9 is supported.
 The following runtimes are supported:
 
 - Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
-- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Node.js 20 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
 - Deno v1.28.0 or higher.
 - Bun 1.0 or later.
 - Cloudflare Workers.
